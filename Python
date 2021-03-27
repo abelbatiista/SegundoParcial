@@ -1,0 +1,66 @@
+bucle=True
+contador=0
+
+contactos=[]
+
+def Crear():
+  nombre = input("Nombre: ")
+  telefono = input("Telefono: ")
+  direccion = input("Direccion: ")
+  email = input("Email: ")
+  contacto = dict(Nombre=nombre, Telefono=telefono, Direccion=direccion, Email=email)
+  contactos.append(contacto)
+
+def Listado():
+  for contacto in contactos:
+    print("Nombre\tTelefono\tDireccion\tEmail")
+    print(f"{contacto['Nombre']}\t{contacto['Telefono']}\t{contacto['Direccion']}\t{contacto['Email']}")
+    input()
+def Buscar():
+  nombre = input('Escriba el nombre del contacto: ')
+
+  for contacto in contactos:
+    if (contacto['Nombre'] == nombre):
+      print(f'Nombre: {contacto["Nombre"]}\nTelefono: {contacto["Telefono"]}\nDireccion: {contacto["Direccion"]}\nEmail: {contacto["Email"]}')
+  input()
+  
+  
+def Modificar():
+  global contador
+  for contacto in contactos:
+    print("Nombre\tTelefono\tDireccion\tEmail")
+    print(f"{contador}. {contacto['Nombre']}\t{contacto['Telefono']}\t{contacto['Direccion']}\t{contacto['Email']}")
+    contador += 1
+  opcion = int(input('Elija la opcion: '))
+  input()
+  nombre = input("Nombre: ")
+  telefono = input("Telefono: ")
+  direccion = input("Direccion: ")
+  email = input("Email: ")
+  contactos[opcion]['Nombre'] = nombre
+  contactos[opcion]["Telefono"] = telefono
+  contactos[opcion]["Direccion"] = direccion
+  contactos[opcion]["Email"] = email
+  input()
+
+while(bucle):
+  print("1. Crear contacto.")
+  print("2. Listado de contactos.")
+  print("3. Buscar ingresando el nombre de la persona.")
+  print("4. Modificar email, telefono, direccion.")
+  print("5. Finalizar programa")
+
+  opcion = input("Elija la opcion que desee: ")
+  if (opcion == "1"):
+    Crear()
+  elif (opcion == "2"):
+    Listado()
+  elif(opcion == "3"):
+    Buscar()
+  elif (opcion == "4"):
+    Modificar()
+  elif (opcion == "5"):
+    bucle=False
+  else:
+    print("Opcion incorrecta.")
+    input()
